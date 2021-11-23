@@ -41,7 +41,7 @@ AIC(M1, M2)
 ## summary of the final model
 summary(M1)
 
-## Table S6 (country-wide dataset)
+## Table S7 (country-wide dataset)
 #                          Estimate Std. Error z value Pr(>|z|)  
 #(Intercept)               0.472885   1.145934   0.413   0.6799  
 #Dist_km                  -0.002315   0.003643  -0.635   0.5252  
@@ -76,7 +76,7 @@ d2$Area_ID<-factor(d2$Area_ID)
 d2$Area_ID<-relevel(d2$Area_ID, ref="TI") ## Island 3 population 2 used as reference
 M3<-glmer(cbind(ObsDays1,Fail)~Dist_km+OYC_Density*Area_ID+(1|Year)+(1|Habitat), data=d2, family=binomial)#(1|jaar)+(1|Hab_finalNew)
 summary(M3) 
-## Table S6
+## Table S7
 #                        Estimate Std. Error z value Pr(>|z|)    
 #(Intercept)             4.9662     1.1044   4.497 6.91e-06 ***
 #Dist_km                -1.2122     0.5161  -2.349   0.0188 *  
@@ -290,7 +290,7 @@ dev.off()
 ####################################################################################################################
 ################################## ANALYSIS ON EFFECT OF HETEROSPECIFIC DENSITY ####################################
 ####################################################################################################################
-#### Table S7 ####
+#### Table S8 ####
 d3<-subset(d, Method=="Nestkaart",
                 select=c(NestSuccess,OYC_Density, Dist_km, Year, Habitat, MamDominance,
                          AllMeadowBirdSpc_Density, Godwit_Density, Lapwing_Density, Redshank_Density, Fail, ObsDays))
@@ -324,5 +324,5 @@ summary(M11)
 M12<-glmer(cbind(ObsDays1,Fail)~Dist_km+AllMeadowBirdSpc_Density*MamDominance+(1|Year)+(1|Habitat),nAGQ=0,family=binomial, data=d3)
 summary(M12)
 
-# AIC comparison of the models (Table S7)
+# AIC comparison of the models (Table S8)
 AIC(M7, M8, M9, M10, M11, M12)
